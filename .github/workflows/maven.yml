@@ -45,7 +45,7 @@ jobs:
 
           ls 
           ls target
-    - run: cp target/*.jar staging
+    - run: cp my-app/target/*.jar staging
     - uses: actions/upload-artifact@v1
       with:
         name: Package
