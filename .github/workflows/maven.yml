@@ -36,10 +36,6 @@ jobs:
     - name: Build with Maven
       run: |
           cd my-app 
-          # mvn versions:set -Dversion=1.0.${{ github.run_number }}
-          # mvn versions:set -DnewVersion=2.0.0-SNAPSHOT -f pom.xml
-          # mvn -B package pom.xml
-          #cd my-app && mvn -B package --file pom.xml
           mkdir target 
           mvn -B package -Dversion=1.0.${{ github.run_number }} -Dpackaging=jar -DoutputDirectory=target --file pom.xml
 
@@ -54,5 +50,5 @@ jobs:
         name: Package
         path: staging
     - name: Build Container image
-      run: echo docker build --build-arg JAR_VERSION=${{ github.run_number }} -t my-app:${{ github.run_number }} .
+      run: docker build --build-arg JAR_VERSION=1.0.${{ github.run_number }} -t my-app:1.0.${{ github.run_number }} .
       
