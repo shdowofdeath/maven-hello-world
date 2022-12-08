@@ -37,7 +37,7 @@ jobs:
       run: |
           cd my-app 
           # mvn versions:set -Dversion=1.0.${{ github.run_number }}
-          mvn versions:set -DnewVersion=2.0.0-SNAPSHOT -f pom.xml
+          # mvn versions:set -DnewVersion=2.0.0-SNAPSHOT -f pom.xml
           mvn -B package pom.xml
           #mvn -B package -Dversion=1.0.${{ github.run_number }} -Dpackaging=jar pom.xml
 
