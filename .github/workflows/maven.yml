@@ -37,7 +37,9 @@ jobs:
       run: |
           cd my-app 
           # mvn versions:set -Dversion=1.0.${{ github.run_number }}
-          mvn -B package -Dversion=1.0.${{ github.run_number }} -Dpackaging=jar pom.xml
+          mvn -B package -Dpackaging=jar pom.xml
+          #mvn -B package -Dversion=1.0.${{ github.run_number }} -Dpackaging=jar pom.xml
+
           ls 
     - run: mkdir staging && cp target/*jar-with-dependencies.jar staging
     - uses: actions/upload-artifact@v1
