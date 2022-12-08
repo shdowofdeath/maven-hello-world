@@ -51,8 +51,8 @@ jobs:
     - name: Build Container image
       run: |
           cd my-app
-          docker build --build-arg JAR_VERSION=1.0.${{ github.run_number }} -t ${{DOCKER_REPO}}/my-app:1.0.${{ github.run_number }} .
+          docker build --build-arg JAR_VERSION=1.0.${{ github.run_number }} -t ${{secrets.DOCKER_REPO}}/my-app:1.0.${{ github.run_number }} .
     - name: Publish Docker image
-      run: docker push ${{DOCKER_REPO}}/my-app:1.0.${{ github.run_number }}
+      run: docker push ${{secrets.DOCKER_REPO}}/my-app:1.0.${{ github.run_number }}
     - name: docker run  
-      run: ${{DOCKER_REPO}}/my-app:1.0.${{ github.run_number }}
+      run: ${{secrets.DOCKER_REPO}}/my-app:1.0.${{ github.run_number }}
