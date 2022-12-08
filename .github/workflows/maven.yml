@@ -54,5 +54,5 @@ jobs:
         name: Package
         path: staging
     - name: Build Container image
-      run: echo docker build --build-arg JAR_VERSION={{ github.run_number }} -t my-app:'{{ github.run_number }}' .
+      run: echo docker build --build-arg JAR_VERSION=${{ github.run_number }} -t my-app:${{ github.run_number }} .
       
