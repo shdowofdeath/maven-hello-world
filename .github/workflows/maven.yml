@@ -36,7 +36,7 @@ jobs:
     - name: Build with Maven
       run: |
           cd my-app 
-          # mvn versions:set -Dversion=1.0.${{ github.run_number }}
+          mvn versions:set -Dversion=1.0.${{ github.run_number }}
           # mvn versions:set -DnewVersion=2.0.0-SNAPSHOT -f pom.xml
           # mvn -B package pom.xml
           #cd my-app && mvn -B package --file pom.xml
@@ -45,7 +45,7 @@ jobs:
 
           ls 
           ls target
-    - run: cp target/*jar-with-dependencies.jar staging
+    - run: cp target/*.jar staging
     - uses: actions/upload-artifact@v1
       with:
         name: Package
