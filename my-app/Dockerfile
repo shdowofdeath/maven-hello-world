@@ -10,5 +10,8 @@ RUN mvn -B package -DskipTests -Dversion=1.0.${JAR_VERSION} -Dpackaging=jar -Dou
 FROM openjdk:8-slim
 ARG JAR_VERSION 
 COPY --from=build /workspace/target/my-app-1.0.${JAR_VERSION}.jar my-app.jar
-EXPOSE 6379
+RUN chmod 777 my-app.jar
+RUN useradd -u 1000 elhay
+# Change to non-root privilege
+USER elhay
 ENTRYPOINT ["java","-jar","my-app.jar"]
