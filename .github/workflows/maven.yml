@@ -45,8 +45,8 @@ jobs:
 
           ls 
           ls target
-    -name: pack
-     run: |
+    - name: pack
+      run: |
           mkdir staging
           cp my-app/target/*.jar staging
     - uses: actions/upload-artifact@v1
