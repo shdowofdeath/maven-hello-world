@@ -40,12 +40,14 @@ jobs:
           # mvn versions:set -DnewVersion=2.0.0-SNAPSHOT -f pom.xml
           # mvn -B package pom.xml
           #cd my-app && mvn -B package --file pom.xml
-          mkdir target
+          mkdir target 
           mvn -B package -Dversion=1.0.${{ github.run_number }} -Dpackaging=jar -DoutputDirectory=target --file pom.xml
 
           ls 
           ls target
-    - run: cp my-app/target/*.jar staging
+    - run: |
+          mkdir staging
+          cp my-app/target/*.jar staging
     - uses: actions/upload-artifact@v1
       with:
         name: Package
